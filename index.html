@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sha'p Left KwaNyuswa - Comprehensive Primary Medical Care</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font globally and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f9fafb; /* gray-50 - General background */
+        }
+                
+        /* --- CIPLA Green Accent Colors --- */
+        /* Primary Green Background */
+        .clinic-primary {
+            background-color: #059669; /* emerald-600 (Deep Green) */
+        }
+        /* Primary Green Text */
+        .clinic-primary-text {
+            color: #059669; /* emerald-600 */
+        }
+        /* Hover Green */
+        .clinic-primary-hover:hover {
+            background-color: #047857; /* emerald-700 */
+        }
+        /* Light Green Background */
+        .clinic-light-bg {
+            background-color: #d1fae5; /* emerald-100 */
+        }
+                
+        /* --- Moving Animation 1: Fade and Slide Up (Main Entrance) --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .animate-entrance {
+            animation: fadeInUp 1s ease-out both;
+            opacity: 0; 
+        }
+        .animate-entrance-text {
+            animation: fadeInUp 0.8s ease-out both;
+            opacity: 0;
+        }
+
+        /* Moving Animation 2: Floating WhatsApp Button */
+        @keyframes float {
+            0% { transform: translatey(0px) scale(1); }
+            50% { transform: translatey(-8px) scale(1.05); }
+            100% { transform: translatey(0px) scale(1); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Moving Animation 3: FAQ accordion smooth transition */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        /* Moving Animation 4: Service Icon Shadow Pulse on Hover (Changed to emerald) */
+        .service-card:hover .service-icon-wrapper {
+            box-shadow: 0 0 0 6px rgba(5, 150, 105, 0.3); /* emerald-600 shadow ring */
+            transition: box-shadow 0.3s ease;
+        }
+        
+        /* Moving Animation 5: Primary Button Lift and Shadow on Hover */
+        .btn-hover:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: scale(1.02);
+        }
+
+        /* Moving Animation 7: Navigation Button Scale on Hover */
+        .nav-btn-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Moving Animation 8: Stats Box Pulse on Hover */
+        .stats-pulse-hover:hover { 
+             transform: scale(1.05); 
+             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); 
+             transition: all 0.3s ease;
+        }
+
+        /* Moving Animation 9: Quick Book Text Highlight/Glow on Hover */
+        .highlight-text-hover:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 4px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Moving Animation 10: Image Hover Zoom (Director) */
+        .img-zoom:hover {
+            transform: scale(1.1);
+        }
+
+        /* Other Animation 1: Card Slide/Lift on Hover */
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Other Animation 2: Testimonial Border Color Change on Hover */
+        .testimonial-card-hover:hover {
+            border-color: #f59e0b; /* orange-500 */
+        }
+        
+        /* Other Animation 3: SVG Icon Spin on Button Hover */
+        .icon-spin:hover .svg-icon {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Other Animation 4: Subtle Text Shadow on Title Hover (Changed to emerald) */
+        .title-shadow-hover:hover {
+            text-shadow: 0 0 5px rgba(5, 150, 105, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+
+        /* Other Animation 5: Link Underline Fade */
+        .link-fade {
+            position: relative;
+            display: inline-block;
+        }
+        .link-fade::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .link-fade:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Other Animation 6: Input Focus Glow (Changed to emerald) */
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.5);
+        }
+        
+        /* Other Animation 7: Map Shadow Pulse (Location) */
+        .map-shadow-pulse:hover {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); /* red glow */
+        }
+        
+        /* Other Animation 8: Footer Link Color Shift (Changed to emerald) */
+        .footer-link-shift:hover {
+            color: #34d399; /* emerald-400 */
+        }
+
+        /* Other Animation 10: Dropdown Arrow Rotation */
+        .dropdown-rotate[aria-expanded="true"] {
+            transform: rotate(180deg);
+        }
+
+        /* New Animation for Service Icons: Subtle Bounce on Hover */
+        @keyframes icon-bounce-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .service-card:hover .icon-emoji {
+            animation: icon-bounce-anim 0.5s ease-in-out infinite alternate;
+        }
+
+        /* Responsive Map Container */
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+            height: 0;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- NEW Logo (Image Display) - ADDED DARK GREEN BACKGROUND AND ENLARGED -->
+                <a href="#hero" id="home-link-logo" class="p-2 rounded-lg clinic-primary transition duration-300 hover:shadow-lg">
+                    <img 
+                        src="logo.png" 
+                        alt="Sha'p Left KwaNyuswa Logo" 
+                        class="h-20 w-auto object-contain header-logo"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                    >
+                    <span style="display:none" class="text-white font-bold text-xl">Sha'p Left</span>
+                </a>
+
+                <!-- Desktop Navigation Links (Other Animation 5: Link Underline Fade) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-gray-600 hover:text-emerald-600 transition duration-150 link-fade">Home</a>
+                    <a href="#services" class="text-gray-600 hover:text-emerald-600 transition duration-150 link-fade">Services</a>
+                    <a href="#about" class="text-gray-600 hover:text-emerald-600 transition duration-150 link-fade">About Us</a>
+                    <a href="#contact" class="text-gray-600 hover:text-emerald-600 transition duration-150 link-fade">Contacts</a>
+                </nav>
+
+                <!-- Appointment Button (Moving Animation 7: Button Scale) - Changed to emerald button -->
+                <a href="#contact" class="hidden md:block bg-emerald-600 clinic-primary-hover text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300 nav-btn-scale">
+                    Book Appointment
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Home</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Services</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">About Us</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contacts</a>
+                <!-- Changed mobile button to emerald -->
+                <a href="#contact" class="block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 rounded-lg mt-2">Book Appointment</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section (Video Background - Now uses Emerald Primary) -->
+        <section id="hero" class="clinic-primary text-white py-24 sm:py-32 relative overflow-hidden">
+            <!-- Video Background Element (Moving Animation 6: Constant movement) -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="background.mp4" type="video/mp4">
+            </video>
+
+            <!-- Dark Overlay for Contrast (Ensures good contrast for text) -->
+            <div class="bg-black/40 absolute inset-0 z-10"></div> 
+
+            <!-- Content (Relative and high z-index to sit above video and overlay) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-entrance relative z-20" style="animation-delay: 0.1s;">
+                <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-4 title-shadow-hover">
+                    Accessible, Affordable, Quality Healthcare You Deserve.
+                </h1>
+                <!-- Extended Company Mission -->
+                <p class="text-xl sm:text-2xl font-light mb-8 max-w-4xl mx-auto animate-entrance-text" style="animation-delay: 0.3s;">
+                    Sha'p Left KwaNyuswa is dedicated to serving the KwaZulu-Natal community with compassionate, evidence-based medical care. Our mission is to ensure every patient receives personalized attention and comprehensive wellness support, prioritizing preventative health and rapid, accurate diagnosis.
+                </p>
+                <!-- Changed button color to Amber for high contrast on the green hero -->
+                <a href="#contact" class="inline-block bg-amber-400 hover:bg-amber-500 text-gray-900 font-semibold text-lg py-3 px-8 rounded-full shadow-xl transition duration-300 transform hover:scale-105 btn-hover">
+                    Call 082 656 1212 to Book
+                </a>
+                <div class="mt-12 flex justify-center space-x-8"> 
+                     <!-- Quick Stats/Info Boxes (Moving Animation 8: Pulsing effect on stats) -->
+                    <div class="bg-black/10 p-4 rounded-lg backdrop-blur-sm transition duration-300 stats-pulse-hover">
+                        <p class="text-3xl font-bold">15+</p>
+                        <p class="text-sm opacity-80">Years Experience</p>
+                    </div>
+                    <div class="bg-black/10 p-4 rounded-lg backdrop-blur-sm transition duration-300 stats-pulse-hover">
+                        <p class="text-3xl font-bold">98%</p>
+                        <p class="text-sm opacity-80">Patient Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Us / Our Commitment -->
+        <section id="about" class="py-16 sm:py-24 bg-white animate-entrance">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <!-- Changed text-emerald-600 to text-green-600 for contrast -->
+                    <h2 class="text-base font-semibold uppercase tracking-wider text-green-600">Our Commitment to You</h2>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                        Why Choose Sha'p Left KwaNyuswa?
+                    </p>
+                </div>
+                <div class="max-w-4xl mx-auto text-lg text-gray-600 space-y-6">
+                    <p class="animate-entrance-text" style="animation-delay: 0.4s;">
+                        Professional Excellence in Primary Care: At Sha'p Left KwaNyuswa, we combine deep local understanding with modern medical practice. Our experienced team is trained to handle a wide spectrum of health concerns, from routine chronic care management to specific women's and children's health needs. We are dedicated to maintaining the highest standards of professional care in a warm, welcoming environment.
+                    </p>
+                    <p class="animate-entrance-text" style="animation-delay: 0.5s;">
+                        Patient-Centric Approach: We believe that effective healthcare starts with listening. Our practitioners take the time to understand your individual health history and concerns, offering clear explanations and involving you in all treatment decisions. This personalized approach ensures your care plan is holistic and tailored to your life in KwaZulu-Natal.
+                    </p>
+                    <p class="animate-entrance-text" style="animation-delay: 0.6s;">
+                        Focus on Prevention: Beyond treating illness, we are passionate about preventative health. We actively promote immunisation, routine screenings (like Pap Smears), and health education to empower you to live a healthier, longer life. Your wellness journey is a partnership, and we are here to guide you every step of the way.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Services Section (Set h-full for alignment, Emojis added) -->
+        <section id="services" class="py-16 sm:py-24 bg-gray-50 animate-entrance">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-base font-semibold uppercase tracking-wider clinic-primary-text">Our Comprehensive Care</h2>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                        Detailed Services Offered
+                    </p>
+                </div>
+
+                <!-- Use grid and h-full to enforce consistent card height -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1: Adult & Child Care (Used emerald-100 background) -->
+                    <div class="h-full">
+                        <div class="service-card bg-white p-6 rounded-xl shadow-lg transition duration-300 transform hover-lift border border-gray-100 animate-entrance-text h-full flex flex-col" style="animation-delay: 0.7s;">
+                            <!-- Icon uses clinic-light-bg (Emerald-100) and clinic-primary-text (Emerald-600) -->
+                            <div class="service-icon-wrapper p-3 inline-flex rounded-full clinic-light-bg clinic-primary-text mb-4">
+                                <span class="text-2xl icon-emoji">👨‍👩‍👧‍👦</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Adult & Child Care</h3>
+                            <p class="text-gray-600 text-sm flex-grow">We manage the full spectrum of primary medical needs for the whole family. How We Assist: From diagnosing and treating common ailments (flu, infections) to managing chronic conditions (diabetes, hypertension) and providing dedicated well-child check-ups and monitoring for developmental milestones.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2: Women's & Family Health -->
+                    <div class="h-full">
+                        <div class="service-card bg-white p-6 rounded-xl shadow-lg transition duration-300 transform hover-lift border border-gray-100 animate-entrance-text h-full flex flex-col" style="animation-delay: 0.8s;">
+                            <!-- Icon uses emerald-100/emerald-600 -->
+                            <div class="service-icon-wrapper p-3 inline-flex rounded-full bg-emerald-100 text-emerald-600 mb-4">
+                                <span class="text-2xl icon-emoji">🌸</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Women's Health & Planning</h3>
+                            <p class="text-gray-600 text-sm flex-grow">How We Assist: We offer preventative care and reproductive health services, including vital Pap Smears for early detection, advice and provision of various Family Planning methods, and management of common gynecological issues in a supportive setting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3: Screenings & Immunisation -->
+                    <div class="h-full">
+                        <div class="service-card bg-white p-6 rounded-xl shadow-lg transition duration-300 transform hover-lift border border-gray-100 animate-entrance-text h-full flex flex-col" style="animation-delay: 0.9s;">
+                            <!-- Icon uses orange (maintained for visual variety/importance) -->
+                            <div class="service-icon-wrapper p-3 inline-flex rounded-full bg-orange-100 text-orange-600 mb-4">
+                                <span class="text-2xl icon-emoji">💉</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">STI Treatment & Child Immunisation</h3>
+                            <p class="text-gray-600 text-sm flex-grow">How We Assist: We provide confidential diagnosis, effective treatment, and supportive counseling for STIs. Additionally, we manage and administer Child Immunisation according to national schedules, protecting our youngest patients from preventable diseases.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 4: Specialized Consults -->
+                    <div class="h-full">
+                        <div class="service-card bg-white p-6 rounded-xl shadow-lg transition duration-300 transform hover-lift border border-gray-100 animate-entrance-text h-full flex flex-col" style="animation-delay: 1.0s;">
+                            <!-- Icon uses purple (maintained for visual variety/importance) -->
+                            <div class="service-icon-wrapper p-3 inline-flex rounded-full bg-purple-100 text-purple-600 mb-4">
+                                <span class="text-2xl icon-emoji">📝</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Pregnancy Care & Medicals</h3>
+                            <p class="text-gray-600 text-sm flex-grow">How We Assist: We offer essential prenatal check-ups and guidance throughout your Pregnancy Care journey. We also conduct and certify various Medicals, including those necessary for PDP applications and work requirements, ensuring full compliance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Quick Booking Call to Action (Moving Animation 9: Text Highlight) -->
+        <section id="quick-book" class="py-16 sm:py-20 clinic-primary text-white animate-entrance">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 animate-entrance-text" style="animation-delay: 0.7s;">
+                    <span class="text-yellow-300 transition duration-500 highlight-text-hover">Ready to Book Your Appointment?</span>
+                </h2>
+                <p class="text-lg sm:text-xl font-light mb-8 animate-entrance-text" style="animation-delay: 0.9s;">
+                    Secure your visit with our compassionate medical team. We offer flexible scheduling to fit your life.
+                </p>
+                <!-- Central Booking Button (Kept Amber for high visibility) -->
+                <a href="#contact" class="inline-flex items-center bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold py-3 px-10 rounded-full shadow-2xl text-xl transition duration-300 transform hover:scale-105 hover:shadow-amber-300/50 border-2 border-amber-400 hover:border-white btn-hover icon-spin">
+                    <svg class="w-6 h-6 mr-2 svg-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M8 11h.01M16 11h.01M17 16h.01M13 16h.01M8 16h.01M7 16V8h10v8H7z"></path></svg>
+                    Book Now
+                </a>
+            </div>
+        </section>
+
+        <!-- UPDATED: CIPLA Sponsor Section - Dark Green Background and Larger Size -->
+        <section id="sponsor" class="py-12 sm:py-16 bg-white animate-entrance">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-base font-semibold uppercase tracking-wider text-gray-500 mb-6">Proudly Funded and Supported by</h2>
+                <div class="flex flex-col items-center justify-center space-y-4">
+                    <!-- ADDED CLINIC PRIMARY (DARK GREEN) BACKGROUND AND LARGER CONTAINER -->
+                    <div class="w-64 h-16 flex items-center justify-center clinic-primary rounded-lg shadow-xl">
+                        <!-- Displaying the logo.png file provided in your website files -->
+                        <img 
+                            src="./logo.png" 
+                            alt="CIPLA Partner Logo" 
+                            class="w-full h-full object-contain p-2"
+                            onerror="this.onerror=null;this.src='https://placehold.co/192x48/059669/ffffff?text=CIPLA+Logo+Placeholder';" 
+                        />
+                    </div>
+                                        
+                    <p class="text-xl font-bold text-gray-900">
+                        Pioneering Affordable Healthcare in KwaNyuswa
+                    </p>
+                    <p class="text-gray-600 max-w-2xl text-sm">
+                        This commitment to accessible, quality primary care is significantly amplified through the generous partnership and funding of CIPLA, a global leader dedicated to 'Caring for Life' by ensuring essential medication reaches all communities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Our Doctors/Team Section -->
+        <section id="doctors" class="py-16 sm:py-24 bg-gray-50 animate-entrance">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-base font-semibold uppercase tracking-wider text-green-600">The Leadership</h2>
+                    <!-- Updated Heading: Meet Our Clinic Practitioner -->
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                        Meet Our Clinic Practitioner
+                    </p>
+                </div>
+                <!-- Centered layout for a single card -->
+                <div class="flex justify-center">
+                    <!-- Director Card 1 (Moving Animation 10: Image Hover Zoom) -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 max-w-sm text-center transition duration-300 transform hover:scale-[1.02]">
+                        <!-- Placeholder Image with Hover Effect - Initials CGL -->
+                        <div class="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4 border-4 border-emerald-600"> 
+                             <img src="https://placehold.co/150x150/059669/ffffff?text=CGL" alt="Sr Gugu Lembethe" class="w-full h-full object-cover transition duration-500 ease-in-out transform img-zoom">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">SR GUGU LEMBETHE</h3>
+                        <!-- Updated Title: Primary Health Care Practitioner -->
+                        <p class="clinic-primary-text font-semibold mb-3">Primary Health Care Practitioner</p>
+                        <p class="text-gray-600 text-sm">Dedicated Practitioner and leader, guiding the clinic's mission to provide excellent, accessible patient care throughout the KwaNyuswa community in KwaDedangendlale.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ Section (Other Animation 10: Dropdown Arrow Rotation) -->
+        <section id="faq" class="py-16 sm:py-24 bg-white animate-entrance">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-base font-semibold uppercase tracking-wider text-purple-600">Need Assistance?</h2>
+                    <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                        Frequently Asked Questions
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                        <!-- Icon color changed to emerald -->
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="faq-a1">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Which medical aids (insurances) do you accept?</span>
+                            <svg class="w-6 h-6 transform transition-transform duration-300 clinic-primary-text dropdown-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-a1" class="faq-answer bg-white" aria-hidden="true">
+                            <p class="p-5 text-gray-600 border-t border-gray-100">
+                                We accept most major South African medical aid schemes, including Discovery Health, Momentum, Bonitas, and Medshield. Please contact our administrative office with your specific scheme details to confirm coverage before your appointment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                         <!-- Icon color changed to emerald -->
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="faq-a2">
+                            <span class="text-lg font-semibold text-gray-800 text-left">How do I book an appointment for a check-up?</span>
+                            <svg class="w-6 h-6 transform transition-transform duration-300 clinic-primary-text dropdown-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-a2" class="faq-answer bg-white" aria-hidden="true">
+                            <p class="p-5 text-gray-600 border-t border-gray-100">
+                                You can book by calling us at (082) 656 1212 during business hours, or by filling out the online appointment request form in the Contact section below. We will call you back promptly to confirm the date and time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-gray-200 rounded-xl shadow-md overflow-hidden">
+                         <!-- Icon color changed to emerald -->
+                        <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition duration-150 focus:outline-none" aria-expanded="false" aria-controls="faq-a3">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Are walk-in patients accepted?</span>
+                            <svg class="w-6 h-6 transform transition-transform duration-300 clinic-primary-text dropdown-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-a3" class="faq-answer bg-white" aria-hidden="true">
+                            <p class="p-5 text-gray-600 border-t border-gray-100">
+                                While we prioritize appointments to ensure minimal wait times and dedicated care, we do our best to accommodate urgent walk-ins based on doctor availability. For non-emergency situations, calling ahead is highly recommended.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Professional Booking & Contact Section (Forms Restructured) -->
+        <section id="contact" class="py-16 sm:py-24 bg-gray-50 animate-entrance">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                
+                <!-- COLUMN 1: PROFESSIONAL BOOKING FORM -->
+                <div class="bg-white p-8 rounded-xl shadow-2xl transition duration-300 hover:shadow-3xl border-t-4 border-emerald-600">
+                    <h2 class="text-3xl font-extrabold mb-6 text-gray-900 flex items-center">
+                        <svg class="w-7 h-7 mr-3 clinic-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M8 11h.01M16 11h.01M17 16h.01M13 16h.01M8 16h.01M7 16V8h10v8H7z"></path></svg>
+                        Professional Appointment Booking
+                    </h2>
+                    <p class="text-gray-600 mb-6 border-b pb-4">Request a specific date and time for your consultation. We aim to confirm all requests quickly.</p>
+
+                    <form id="booking-form" class="space-y-4" action="https://formspree.io/f/mgvgbvrv" method="POST">
+                        <input type="hidden" name="_subject" value="New Appointment BOOKING Request - Sha'p Left KwaNyuswa" />
+
+                        <div>
+                            <label for="booking_name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="booking_name" name="name" required placeholder="Sipho Dlamini" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow">
+                        </div>
+                                                
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="booking_date" class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                                <input type="date" id="booking_date" name="preferred_date" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border bg-white focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow">
+                            </div>
+                            <div>
+                                <label for="booking_time" class="block text-sm font-medium text-gray-700">Preferred Time Slot</label>
+                                <select id="booking_time" name="preferred_time" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border bg-white focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow">
+                                    <option value="" disabled selected>Select Time</option>
+                                    <option value="08:00 AM - 10:00 AM">Morning (08:00 AM - 10:00 AM)</option>
+                                    <option value="10:00 AM - 12:00 PM">Late Morning (10:00 AM - 12:00 PM)</option>
+                                    <option value="01:00 PM - 03:00 PM">Early Afternoon (01:00 PM - 03:00 PM)</option>
+                                    <option value="03:00 PM - 05:00 PM">Late Afternoon (03:00 PM - 05:00 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="booking_service" class="block text-sm font-medium text-gray-700">Requested Service</label>
+                            <select id="booking_service" name="service" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border bg-white focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow">
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="Adult & Child Care">Adult & Child Care</option>
+                                <option value="Family Planning & Pap Smear">Family Planning & Pap Smear</option>
+                                <option value="Pregnancy Care & Child Immunisation">Pregnancy Care & Child Immunisation</option>
+                                <option value="Medicals, PDP, & STI Treatment">Medicals, PDP, & STI Treatment</option>
+                                <option value="Other / Chronic Management">Other / Chronic Management</option>
+                            </select>
+                        </div>
+                                                
+                        <div>
+                            <label for="booking_message" class="block text-sm font-medium text-gray-700">Details / Specific Symptoms (Optional)</label>
+                            <textarea id="booking_message" name="details" rows="3" placeholder="Briefly describe the reason for your visit." class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow"></textarea>
+                        </div>
+                                                
+                        <button type="submit" id="submit-booking" class="w-full clinic-primary clinic-primary-hover text-white font-semibold py-3 rounded-lg shadow-lg transition duration-300 transform hover:scale-[1.01] disabled:opacity-50 btn-hover">
+                            Confirm Appointment Request
+                        </button>
+                        <div id="booking-message" class="mt-4 text-center hidden p-3 rounded-lg"></div>
+                    </form>
+                </div>
+
+                <!-- COLUMN 2: GENERAL CONTACT & INFO -->
+                <div class="space-y-10">
+                                        
+                    <!-- General Inquiry Form -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-gray-300">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.84 5.234A3 3 0 0012 14a3 3 0 001.16-.166L21 8m-9 6l-8-6V6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-2"></path></svg>
+                            General Contact Inquiry
+                        </h3>
+                        <p class="text-gray-600 mb-4">Have a quick question? Use this form for general messages, queries, or non-urgent matters.</p>
+
+                        <form id="inquiry-form" class="space-y-4" action="https://formspree.io/f/mgvgbvrv" method="POST">
+                            <input type="hidden" name="_subject" value="New General CONTACT Inquiry - Sha'p Left KwaNyuswa" />
+
+                            <div>
+                                <label for="inquiry_name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="inquiry_name" name="name" required placeholder="Your Name" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow">
+                            </div>
+                            <div>
+                                <label for="inquiry_message" class="block text-sm font-medium text-gray-700">Your Message</label>
+                                <textarea id="inquiry_message" name="message" rows="3" required placeholder="Type your general question here..." class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:border-emerald-600 focus:ring-emerald-600 transition duration-150 input-glow"></textarea>
+                            </div>
+                            <button type="submit" id="submit-inquiry" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg shadow-lg transition duration-300 transform hover:scale-[1.01] disabled:opacity-50 btn-hover">
+                                Send Message
+                            </button>
+                            <div id="inquiry-message" class="mt-4 text-center hidden p-3 rounded-lg"></div>
+                        </form>
+                    </div>
+
+                    <!-- Clinic Info & Location -->
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold clinic-primary-text mb-4 border-b pb-2">Our Physical Location</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start text-lg">
+                                <!-- Icon color maintained for location importance -->
+                                <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243m10.12-10.12l-4.243 4.243m0 0L9.414 10.414m2.828 2.828l-4.243-4.243m0 0a4 4 0 115.657 5.657L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                <div>
+                                    <p class="font-semibold">Sha'p Left KwaNyuswa</p>
+                                    <!-- UPDATED LOCATION: Added KwaNyuswa reference -->
+                                    <p class="text-gray-700">16 ZULU RESERVE ROAD, BOTHAS HILL, KWA-NYUSWA</p>
+                                    <p class="text-gray-700">KWAZULU-NATAL, 3660, South Africa</p>
+                                </div>
+                            </li>
+                            <li class="mt-4">
+                                <!-- Embedded Google Map (Actual Map Display) (Other Animation 7: Map Shadow Pulse) -->
+                                <div class="map-container shadow-lg map-shadow-pulse">
+                                    <!-- Using the confirmed address: 16 ZULU RESERVE ROAD, BOTHAS HILL -->
+                                    <iframe 
+                                        src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=16%20Zulu%20Reserve%20Rd%2C%20Bothas%20Hill%2C%203660&t=&z=14&ie=UTF8&iwloc=B&output=embed" 
+                                        frameborder="0" 
+                                        scrolling="no" 
+                                        marginheight="0" 
+                                        marginwidth="0"
+                                        allowfullscreen="" 
+                                        loading="lazy"
+                                    ></iframe>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer [Content redacted for brevity] -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Adjusted grid to only use three columns on md and above -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8">
+                <div>
+                    <!-- Logo color changed to emerald -->
+                    <h4 class="text-xl font-bold mb-4 clinic-primary-text">Sha'p Left KwaNyuswa</h4>
+                    <p class="text-sm text-gray-400">Your trusted partner for comprehensive medical and preventative care. We are committed to your wellness journey.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <!-- Hover color changed to emerald -->
+                        <li><a href="#hero" class="hover:text-emerald-400 transition footer-link-shift">Home</a></li>
+                        <li><a href="#services" class="hover:text-emerald-400 transition footer-link-shift">Services</a></li>
+                        <li><a href="#about" class="hover:text-emerald-400 transition footer-link-shift">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-emerald-400 transition footer-link-shift">Contacts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                         <!-- Hover color changed to emerald -->
+                        <li><a href="#faq" class="hover:text-emerald-400 transition footer-link-shift">FAQ</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition footer-link-shift">Patient Portal</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition footer-link-shift">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- The "Connect" column (social media icons) was removed here -->
+            </div>
+            <div class="text-center text-sm text-gray-400 mt-8">
+                &copy; <span id="year"></span> Sha'p Left KwaNyuswa. All rights reserved. Located in KwaZulu-Natal, South Africa.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button (Moving Animation 2: Float) - Kept Green as standard for WhatsApp -->
+    <a href="https://wa.me/27826561212" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-3 sm:p-4 rounded-full shadow-xl transition duration-300 transform hover:scale-110 animate-float" aria-label="WhatsApp Chat">
+        <!-- WhatsApp Icon SVG -->
+        <svg fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7 sm:w-8 sm:h-8">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.34 3.45 16.83L2.05 22.01L7.47 20.61C8.91 21.46 10.49 21.91 12.04 21.91C17.5 21.91 21.95 17.46 21.95 11.91C21.95 6.45 17.5 2 12.04 2ZM17.45 15.65C17.21 16.14 16.27 16.63 15.74 16.7C15.22 16.76 14.28 16.79 12.87 16.22C10.66 15.35 9.1 13.12 8.92 12.91C8.75 12.7 8.01 11.75 8.01 10.79C8.01 9.83 8.47 9.38 8.68 9.17C8.89 8.96 9.13 8.9 9.39 8.9C9.64 8.9 9.86 8.93 10.05 8.96C10.23 9.0 10.45 8.95 10.63 9.37C10.81 9.79 11.23 10.87 11.29 10.99C11.35 11.11 11.39 11.25 11.3 11.45C11.21 11.64 10.74 12.23 10.25 12.79C10.12 12.92 10.03 13.01 10.13 13.2C10.22 13.4 10.72 14.16 11.43 14.81C12.39 15.68 13.19 15.93 13.48 16.05C13.78 16.17 14.07 16.16 14.27 15.94C14.47 15.72 14.94 15.24 15.14 15.02C15.34 14.8 15.58 14.77 15.83 14.86C16.08 14.95 17.3 15.53 17.54 16.1C17.78 16.68 17.78 17.06 17.78 17.13C17.78 17.2 17.76 17.33 17.45 17.65ZM12.04 4C16.59 4 20.13 7.54 20.13 12C20.13 16.46 16.59 20 12.04 20C10.75 20 9.48 19.64 8.35 18.98L7.84 18.73L7.33 20.61L8.98 19.12C8.11 18.23 7.5 17.13 7.22 15.93L7.15 15.65L7.09 15.65C6.91 15.65 4.8 15.37 4.8 12C4.8 7.54 8.34 4 12.04 4Z"/>
+        </svg>
+    </a>
+
+    <!-- JavaScript for Mobile Menu, Smooth Scroll, Form Submission, and FAQ -->
+    <script>
+        // Formspree submission function wrapper
+        async function handleFormSubmit(formId, submitId, messageId) {
+            const form = document.getElementById(formId);
+            const submitButton = document.getElementById(submitId);
+            const formMessage = document.getElementById(messageId);
+
+            if(!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending Request...';
+                
+                // Clear previous messages
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+
+                const formData = new FormData(form);
+                const name = formData.get('name') || 'Guest';
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json' 
+                         }
+                    });
+
+                    if (response.ok) {
+                        // Success scenario
+                        const successMessage = formId === 'booking-form'
+                            ? `Thank you, ${name}! Your appointment request has been submitted. We will call you soon on 082 656 1212 to confirm your booking date and time.`
+                            : `Thank you, ${name}! Your general message has been sent to our team. We will respond shortly.`;
+                        
+                        formMessage.textContent = successMessage;
+                        formMessage.classList.remove('hidden');
+                        formMessage.classList.add('bg-green-100', 'text-green-700');
+                        form.reset();
+                    } else {
+                        // Failure scenario (e.g., validation errors)
+                        let errorMessage = 'An unexpected error occurred while submitting the form. Please check your details or call us directly.';
+                        try {
+                            let errorData = await response.json();
+                            if (errorData.errors) {
+                                errorMessage = errorData.errors.map(err => err.field ? `${err.field}: ${err.message}` : err.message).join(" | ");
+                            }
+                        } catch (e) {
+                            // Ignore JSON parse error
+                        }
+                        
+                        formMessage.textContent = `Submission Failed: ${errorMessage}`;
+                        formMessage.classList.remove('hidden');
+                        formMessage.classList.add('bg-red-100', 'text-red-700');
+                    }
+
+                } catch (error) {
+                    // Network error (e.g., connection issue)
+                    formMessage.textContent = `Network Error: Could not reach the server. Please check your connection or call us directly.`;
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('bg-red-100', 'text-red-700');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = formId === 'booking-form' ? 'Confirm Appointment Request' : 'Send Message';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Footer Year
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('year');
+            if(yearElement) yearElement.textContent = currentYear;
+
+            // 2. Mobile Menu Toggle
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+            
+            // 3. Initialize both forms
+            handleFormSubmit('booking-form', 'submit-booking', 'booking-message');
+            handleFormSubmit('inquiry-form', 'submit-inquiry', 'inquiry-message');
+
+            // 4. FAQ Toggle (Accordion functionality)
+            document.querySelectorAll('.faq-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                    // Collapse all others before expanding current one
+                    document.querySelectorAll('.faq-toggle[aria-expanded="true"]').forEach(otherButton => {
+                        if (otherButton !== button) {
+                            const otherAnswer = otherButton.nextElementSibling;
+                            const otherIcon = otherButton.querySelector('svg');
+                            
+                            otherAnswer.style.maxHeight = null;
+                            otherIcon.classList.remove('rotate-180');
+                            otherButton.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    if (isExpanded) {
+                        answer.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                        button.setAttribute('aria-expanded', 'false');
+                    } else {
+                        // Moving Animation 3: Smooth expansion of answer
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // 5. Scroll Animation (Moving Animation 1) - Observer for scroll-in effects
+            const animateElements = document.querySelectorAll('.animate-entrance, .animate-entrance-text');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            animateElements.forEach(el => {
+                el.style.animationPlayState = 'paused'; // Pause initially
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
